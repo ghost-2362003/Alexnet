@@ -52,8 +52,6 @@ def get_train_valid_loader(data_dir, batch_size, augment
     num_train = len(train_dataset)
     indices = list(range(num_train))
     split = int(np.floor(valid_size * num_train))
-    
-    split = int(np.floor(valid_size * num_train))
 
     if shuffle:
         np.random.seed(random_seed)
