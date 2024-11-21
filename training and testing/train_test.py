@@ -1,8 +1,7 @@
 import torch
 import torch.nn as nn
-from DataLoader import DataLoader as dl
-from AlexNet_Architecture import AlexNet
-
+from AlexNet_Architecture.alexnet import AlexNet
+from dataLoaders.DataLoader import get_train_valid_loader, get_test_loader
 #setup the available device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -17,7 +16,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate, weight_decay = 0.005, momentum = 0.9)  
     
 # Train the model
-train_loader, valid_loader = dl.get_train_valid_loader(data_dir = './data', batch_size = 64, augment = False, random_seed = 1)
+train_loader, valid_loader = get_train_valid_loader(data_dir = './data', batch_size = 64, augment = False, random_seed = 1)
 
 total_step = len(train_loader)
 
